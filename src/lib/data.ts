@@ -1,7 +1,7 @@
 export const CONTACT = {
-  email: "contact@pyextract.dev",
-  github: "https://github.com/pyextract",
-  linkedin: "https://www.linkedin.com/in/pyextract",
+  email: "beriorag4@gmail.com",
+  github: "https://github.com/birtukan91",
+  linkedin: "https://www.linkedin.com/in/birtukan-gebretsadkan-86a96435a/",
   handle: "pyextract",
 };
 
@@ -14,7 +14,7 @@ export const NAV_LINKS = [
 ];
 
 export const HERO_STATS = [
-  { value: 2.4, decimals: 1, suffix: "M+", label: "records extracted" },
+  { value: 94000, decimals: 0, suffix: "+", label: "records extracted" },
   { value: 120, decimals: 0, suffix: "+", label: "pipelines shipped" },
   { value: 99.4, decimals: 1, suffix: "%", label: "field accuracy" },
   { value: 40, decimals: 0, suffix: "+", label: "sites automated" },
