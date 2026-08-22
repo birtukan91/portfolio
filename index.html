@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Python web scraping & data extraction specialist — resilient pipelines, anti-bot bypasses, and clean, ready-to-use B2B datasets for businesses and startups."
+    />
+    <!-- TODO: replace contact@pyextract.dev, github.com/pyextract and linkedin.com/in/pyextract with your real handles -->
+    <title>Python Web Scraping &amp; Data Extraction Specialist</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2315120c'/%3E%3Cpath d='M9 11l6 5-6 5' stroke='%23d2a229' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 21h7' stroke='%23d2a229' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ------- static preview styles (used when the JS app is not running) ------- */
+      :root {
+        --ink: #15120c; --ink2: #1c1811; --line: #332b1b; --line2: #282216;
+        --gold: #d2a229; --gold2: #f0ca60; --paper: #ece4cf; --mut: #a3987e; --faint: #6f6550;
+      }
+      html { scroll-behavior: smooth; }
+      body { background: var(--ink); color: var(--paper); margin: 0; font-family: "IBM Plex Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+      .sp-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+      .sp-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; }
+      .sp-nav a { color: var(--mut); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: .2em; margin-left: 22px; }
+      .sp-nav a:hover { color: var(--gold2); }
+      .sp-logo { color: var(--paper) !important; font-size: 14px !important; letter-spacing: 0 !important; margin: 0 !important; }
+      .sp-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding-top: 64px; }
+      .sp-kicker { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--faint); margin: 0; }
+      .sp-kicker b { color: var(--gold); font-weight: 500; }
+      .sp-h1 { font-family: "Space Grotesk", sans-serif; font-size: clamp(34px, 5vw, 54px); line-height: 1.08; margin: 18px 0 0; font-weight: 700; letter-spacing: -.5px; }
+      .sp-gold { color: var(--gold); }
+      .sp-sub { font-size: 17px; line-height: 1.75; color: var(--mut); max-width: 620px; margin: 22px 0 0; }
+      .sp-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+      .sp-btn { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; padding: 14px 24px; border-radius: 3px; display: inline-block; }
+      .sp-btn-p { background: var(--gold); color: var(--ink); font-weight: 600; }
+      .sp-btn-p:hover { background: var(--gold2); }
+      .sp-btn-s { border: 1px solid var(--line); color: var(--paper); }
+      .sp-btn-s:hover { border-color: var(--gold); color: var(--gold2); }
+      .sp-avail { font-family: "IBM Plex Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .18em; color: var(--faint); margin: 26px 0 0; }
+      .sp-avail i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 10px; }
+      .sp-term { background: var(--ink2); border: 1px solid var(--line); border-radius: 6px; font-family: "IBM Plex Mono", monospace; font-size: 12px; line-height: 2.05; padding: 16px 20px; color: var(--mut); overflow-x: auto; box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); }
+      .sp-term .g { color: var(--gold); } .sp-term .gb { color: var(--gold2); } .sp-term .f { color: var(--faint); }
+      .sp-termbar { display: flex; gap: 6px; align-items: center; border-bottom: 1px solid var(--line2); padding-bottom: 10px; margin-bottom: 12px; }
+      .sp-dot { width: 9px; height: 9px; border-radius: 50%; }
+      .sp-termtitle { margin-left: 8px; font-size: 11px; color: var(--faint); }
+      .sp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid var(--line2); margin-top: 64px; padding-top: 36px; padding-bottom: 64px; }
+      .sp-stat b { font-family: "Space Grotesk", sans-serif; font-size: 34px; color: var(--gold2); font-weight: 700; display: block; }
+      .sp-stat b i { color: var(--gold); font-style: normal; }
+      .sp-stat span { font-family: "IBM Plex Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .2em; color: var(--faint); display: block; margin-top: 6px; }
+      .sp-section { padding-top: 80px; }
+      .sp-sec-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .28em; color: var(--gold); margin: 0; }
+      .sp-sec-k s { color: var(--faint); text-decoration: none; margin-right: 10px; }
+      .sp-h2 { font-family: "Space Grotesk", sans-serif; font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; letter-spacing: -.4px; margin: 16px 0 0; }
+      .sp-about { display: grid; grid-template-columns: 1.12fr .88fr; gap: 48px; align-items: start; margin-top: 36px; }
+      .sp-bio { font-size: 18px; line-height: 1.85; color: rgba(236,228,207,.9); margin: 0; }
+      .sp-bio em { color: var(--gold2); font-style: normal; }
+      .sp-lead-l { font-family: "IBM Plex Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .26em; color: var(--faint); margin: 30px 0 14px; }
+      .sp-checks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .sp-checks li { font-size: 14px; line-height: 1.6; color: var(--mut); padding-left: 20px; position: relative; }
+      .sp-checks li::before { content: "▸"; color: var(--gold); position: absolute; left: 0; }
+      .sp-photo { width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; object-position: top; display: block; border: 1px solid var(--line); background: var(--ink2); }
+      .sp-photo-cap { font-family: "IBM Plex Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .3em; color: rgba(236,228,207,.7); text-align: center; margin: 10px 0 0; }
+      .sp-yaml { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; line-height: 1.9; margin-top: 18px; }
+      .sp-yaml div { display: flex; gap: 12px; }
+      .sp-yaml dt { width: 96px; color: var(--gold); flex-shrink: 0; }
+      .sp-yaml dd { margin: 0; color: rgba(236,228,207,.8); }
+      .sp-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 36px; }
+      .sp-card { border: 1px solid var(--line); background: rgba(28,24,17,.5); border-radius: 6px; padding: 28px; }
+      .sp-num { font-family: "Space Grotesk", sans-serif; font-size: 22px; font-weight: 700; color: var(--faint); }
+      .sp-card h3 { font-family: "Space Grotesk", sans-serif; font-size: 19px; margin: 18px 0 10px; color: var(--paper); }
+      .sp-card p { font-size: 14px; line-height: 1.7; color: var(--mut); margin: 0; }
+      .sp-chips { margin-top: 18px; }
+      .sp-chips span { border: 1px solid var(--line); padding: 4px 10px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: rgba(236,228,207,.65); margin: 0 6px 6px 0; display: inline-block; }
+      .sp-proj { border: 1px solid var(--line); background: rgba(28,24,17,.6); padding: 34px; margin-top: 22px; }
+      .sp-proj-tag { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--gold); margin: 0; }
+      .sp-proj h3 { font-family: "Space Grotesk", sans-serif; font-size: 24px; margin: 12px 0 16px; }
+      .sp-proj p { font-size: 14px; line-height: 1.7; color: var(--mut); margin: 4px 0 0; }
+      .sp-feats { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+      .sp-feats li { font-size: 14px; line-height: 1.6; color: rgba(236,228,207,.8); padding-left: 20px; position: relative; }
+      .sp-feats li::before { content: "▸"; color: var(--gold); position: absolute; left: 0; }
+      .sp-deliv { border-left: 2px solid var(--gold); background: rgba(210,162,41,.06); padding: 14px 18px; margin-top: 20px; font-size: 14px; color: rgba(236,228,207,.85); }
+      .sp-deliv b { font-family: "IBM Plex Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .24em; color: var(--gold); margin-right: 12px; }
+      .sp-mets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-top: 1px solid var(--line2); margin-top: 22px; padding-top: 20px; }
+      .sp-mets b { font-family: "Space Grotesk", sans-serif; font-size: 22px; color: var(--gold2); display: block; }
+      .sp-mets span { font-family: "IBM Plex Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--faint); }
+      .sp-stack { display: grid; grid-template-columns: .92fr 1.08fr; gap: 40px; margin-top: 36px; align-items: start; }
+      .sp-stack .sp-yaml2 { font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 2.05; background: var(--ink2); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; }
+      .sp-stack .sp-yaml2 .g { color: var(--gold); } .sp-stack .sp-yaml2 .f { color: var(--faint); } .sp-stack .sp-yaml2 .v { color: rgba(236,228,207,.8); padding-left: 20px; }
+      .sp-group { margin-bottom: 28px; }
+      .sp-group h4 { font-family: "IBM Plex Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .26em; color: var(--faint); margin: 0 0 12px; }
+      .sp-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 36px; }
+      .sp-link { font-family: "IBM Plex Mono", monospace; color: var(--paper); text-decoration: underline; text-decoration-color: rgba(210,162,41,.4); text-underline-offset: 4px; font-size: 15px; }
+      .sp-link:hover { color: var(--gold2); }
+      .sp-note { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--faint); margin-top: 30px; }
+      .sp-formnote { border: 1px solid var(--line); background: var(--ink2); border-radius: 6px; padding: 28px; font-size: 14px; line-height: 1.8; color: var(--mut); }
+      .sp-formnote b { color: var(--gold); font-family: "IBM Plex Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .24em; display: block; margin-bottom: 10px; }
+      .sp-footer { border-top: 1px solid var(--line2); margin-top: 80px; padding: 30px 0; font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--faint); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .sp-footer a { color: inherit; }
+      @media (max-width: 900px) {
+        .sp-hero, .sp-about, .sp-stack, .sp-contact { grid-template-columns: 1fr; gap: 32px; }
+        .sp-stats { grid-template-columns: 1fr 1fr; }
+        .sp-checks { grid-template-columns: 1fr; }
+        .sp-nav a:not(.sp-logo) { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Shown only if the interactive app fails to boot -->
+    
+
+    <div id="root">
+      <!-- ============ STATIC PREVIEW (replaced automatically by the interactive app) ============ -->
+      <div class="sp-wrap">
+        <nav class="sp-nav">
+          <a class="sp-logo" href="#top"><span style="color:#6f6550">~/</span>pyextract<span style="color:#d2a229">_</span></a>
+          <div>
+            <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+          </div>
+        </nav>
+
+        <header class="sp-hero" id="top">
+          <div>
+            <p class="sp-kicker"><b>root@pyextract</b>:~$ whoami</p>
+            <h1 class="sp-h1">Python Web Scraping &amp;<br /><span class="sp-gold">Data Extraction Specialist</span></h1>
+            <p class="sp-sub">I build resilient, automated data pipelines, handle anti-bot bypasses, and deliver clean, ready-to-use B2B datasets for businesses and startups.</p>
+            <div class="sp-ctas">
+              <a class="sp-btn sp-btn-p" href="#projects">View My Projects →</a>
+              <a class="sp-btn sp-btn-s" href="#contact">Contact Me</a>
+            </div>
+            <p class="sp-avail"><i></i>Available for new contracts — scope your dataset</p>
+          </div>
+          <div class="sp-term">
+            <div class="sp-termbar">
+              <span class="sp-dot" style="background:rgba(210,162,41,.25)"></span>
+              <span class="sp-dot" style="background:rgba(210,162,41,.45)"></span>
+              <span class="sp-dot" style="background:rgba(210,162,41,.8)"></span>
+              <span class="sp-termtitle">scrape_session.py — bash</span>
+            </div>
+            <p style="margin:0" class="gb">$ python pipeline.py --target tx-contractors.us --pages 18</p>
+            <p style="margin:0" class="f">[init] fingerprint pool ready · 12 residential proxies</p>
+            <p style="margin:0" class="f">[init] playwright chromium · stealth plugins injected</p>
+            <p style="margin:0">[GET 200] /contractors?page=1 · 0.42s · 24 cards</p>
+            <p style="margin:0">[parse] emails:21 · phones:18 · websites:21 → row buffer</p>
+            <p style="margin:0">[GET 200] /contractors?page=2 · 0.51s · 24 cards</p>
+            <p style="margin:0">[parse] emails:20 · phones:19 · websites:22 → row buffer</p>
+            <p style="margin:0" class="g">[anti-bot] challenge detected → solver engaged</p>
+            <p style="margin:0" class="g">[solve] passed in 2.1s · continuing crawl</p>
+            <p style="margin:0" class="f">[stream] pages 4–17 … 392 rows buffered</p>
+            <p style="margin:0">[dedupe] 412 raw → 398 unique profiles (14 dropped)</p>
+            <p style="margin:0" class="gb">[export] contractors_tx_2026.csv · 398 rows · 9 cols</p>
+            <p style="margin:0" class="gb">[done] 398 records · 3m 12s · 0 errors ✓</p>
+          </div>
+        </header>
+
+        <div class="sp-stats">
+          <div class="sp-stat"><b>94,000<i>+</i></b><span>records extracted</span></div>
+          <div class="sp-stat"><b>120<i>+</i></b><span>pipelines shipped</span></div>
+          <div class="sp-stat"><b>99.4<i>%</i></b><span>field accuracy</span></div>
+          <div class="sp-stat"><b>40<i>+</i></b><span>sites automated</span></div>
+        </div>
+
+        <section class="sp-section" id="about" style="margin-top:64px">
+          <p class="sp-sec-k"><s>01</s>whoami</p>
+          <h2 class="sp-h2">About Me</h2>
+          <div class="sp-about">
+            <div>
+              <p class="sp-bio">I am a Python developer specializing in automated web scraping, API reverse engineering, and data processing. I help businesses <em>eliminate manual data entry</em>, gather <em>targeted market intelligence</em>, and fuel their outbound sales campaigns with <em>verified lead lists</em>. Whether dealing with dynamic JavaScript sites, pagination, or hidden backend endpoints, I build custom solutions tailored to your exact data requirements.</p>
+              <p class="sp-lead-l">// what i handle</p>
+              <ul class="sp-checks">
+                <li>Eliminating manual data entry for sales &amp; ops teams</li>
+                <li>Gathering targeted market intelligence on schedule</li>
+                <li>Fueling outbound campaigns with verified lead lists</li>
+                <li>Cracking dynamic JavaScript, pagination &amp; hidden endpoints</li>
+                <li>Delivering deduplicated, CRM-ready datasets</li>
+              </ul>
+            </div>
+            <div>
+              <img class="sp-photo" src="src/assets/why2.jpg" alt="Portrait of the developer" onerror="this.style.visibility='hidden'" />
+              <p class="sp-photo-cap">the human behind the spiders</p>
+              <dl class="sp-yaml">
+                <div><dt>role:</dt><dd>Python Data Extraction Specialist</dd></div>
+                <div><dt>focus:</dt><dd>scraping · api reversing · lead gen</dd></div>
+                <div><dt>base:</dt><dd>remote worldwide</dd></div>
+                <div><dt>experience:</dt><dd>2+ yrs building data pipelines</dd></div>
+                <div><dt>clients:</dt><dd>startups · agencies · real estate · B2B SaaS</dd></div>
+                <div><dt>uptime:</dt><dd>pipelines running 24/7 on cron</dd></div>
+                <div><dt>status:</dt><dd>open to new projects</dd></div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="sp-section" id="services" style="margin-top:64px">
+          <p class="sp-sec-k"><s>02</s>core_services</p>
+          <h2 class="sp-h2">Core Services</h2>
+          <div class="sp-cards">
+            <div class="sp-card"><span class="sp-num">01</span><h3>Custom Web Scraping &amp; Automation</h3><p>Building resilient spiders using Python, Scrapy, Playwright, and HTTPX to extract structured data from complex websites — dynamic pages, pagination, logins and all.</p><div class="sp-chips"><span>Python</span><span>Scrapy</span><span>Playwright</span><span>HTTPX</span></div></div>
+            <div class="sp-card"><span class="sp-num">02</span><h3>Hidden API Reverse Engineering</h3><p>Inspecting backend traffic to extract raw JSON/XML data directly from internal endpoints for high-speed, lightweight data collection — no HTML parsing required.</p><div class="sp-chips"><span>HTTPX</span><span>Postman</span><span>JSON</span><span>Asyncio</span></div></div>
+            <div class="sp-card"><span class="sp-num">03</span><h3>B2B Lead Generation &amp; Mining</h3><p>Gathering targeted business lists (Names, Emails, Phone Numbers, Websites, Addresses) from regional directories and public registries for outbound sales.</p><div class="sp-chips"><span>Scrapy</span><span>Selectolax</span><span>Regex</span><span>Pandas</span></div></div>
+            <div class="sp-card"><span class="sp-num">04</span><h3>Data Hygiene &amp; Processing</h3><p>Cleaning, formatting, and deduplicating raw datasets using Selectolax, Regex, and Pandas into CSV, Excel, or database-ready formats your team can plug in immediately.</p><div class="sp-chips"><span>Pandas</span><span>Regex</span><span>CSV</span><span>SQL</span></div></div>
+          </div>
+        </section>
+
+        <section class="sp-section" id="projects" style="margin-top:64px">
+          <p class="sp-sec-k"><s>03</s>case_studies</p>
+          <h2 class="sp-h2">Featured Projects</h2>
+
+          <div class="sp-proj">
+            <p class="sp-proj-tag">./case_01.py &nbsp;·&nbsp; shipped</p>
+            <h3>B2B Contractor Lead Generation Pipeline</h3>
+            <p>Extracted 1,000+ targeted contractor profiles across Texas for direct sales outreach — names, emails, phones, service areas and licensing data.</p>
+            <ul class="sp-feats">
+              <li>Automated browser rendering for JavaScript-heavy directory pages</li>
+              <li>Regex email parsing from unstructured footers and lazy-loaded contact blocks</li>
+              <li>Deduplication routines across multiple overlapping registries</li>
+            </ul>
+            <div class="sp-deliv"><b>deliverable</b>Clean, CRM-ready CSV dataset with verified contacts.</div>
+            <div class="sp-mets">
+              <div><b>1,000+</b><span>profiles extracted</span></div>
+              <div><b>96%</b><span>verified emails</span></div>
+              <div><b>12 hrs</b><span>full run time</span></div>
+            </div>
+          </div>
+
+          <div class="sp-proj">
+            <p class="sp-proj-tag">./case_02.py &nbsp;·&nbsp; shipped</p>
+            <h3>Real Estate Directory Data Mining</h3>
+            <p>Automated lead extraction from dynamic real estate listings across multiple regions for a regional brokerage analytics team.</p>
+            <ul class="sp-feats">
+              <li>Managed dynamic pagination and infinite-scroll listing grids</li>
+              <li>Custom dropdown and map-view handling to surface every listing</li>
+              <li>Export to structured, multi-sheet Excel workbooks</li>
+            </ul>
+            <div class="sp-deliv"><b>deliverable</b>Structured Excel sheets with a 24-field schema per listing.</div>
+            <div class="sp-mets">
+              <div><b>14</b><span>regions covered</span></div>
+              <div><b>8,400+</b><span>listings captured</span></div>
+              <div><b>24</b><span>fields per record</span></div>
+            </div>
+          </div>
+
+          <div class="sp-proj">
+            <p class="sp-proj-tag">./case_03.py &nbsp;·&nbsp; running</p>
+            <h3>Competitor Pricing Monitor</h3>
+            <p>Continuous price and stock tracking across 3 regional retailers so a mid-size e-commerce client can react to competitor moves within the hour.</p>
+            <ul class="sp-feats">
+              <li>Delta detection — flags only changed prices, not full re-sends</li>
+              <li>Hourly unattended runs with retry, rotation and alerting</li>
+              <li>Nightly archival into SQLite for 12-month trend analysis</li>
+            </ul>
+            <div class="sp-deliv"><b>deliverable</b>Live JSON feed + daily CSV digest with price-move alerts.</div>
+            <div class="sp-mets">
+              <div><b>500+</b><span>SKUs tracked</span></div>
+              <div><b>hourly</b><span>refresh cadence</span></div>
+              <div><b>99.9%</b><span>uptime</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sp-section" id="stack" style="margin-top:64px">
+          <p class="sp-sec-k"><s>04</s>toolbox</p>
+          <h2 class="sp-h2">Technical Stack</h2>
+          <div class="sp-stack">
+            <div class="sp-yaml2">
+              <p class="f" style="margin:0"># last audited 2026-02</p>
+              <p class="g" style="margin:6px 0 0">languages:</p><p class="v" style="margin:0">- Python</p><p class="v" style="margin:0">- SQL</p>
+              <p class="g" style="margin:10px 0 0">scraping_frameworks:</p><p class="v" style="margin:0">- Scrapy</p><p class="v" style="margin:0">- Playwright</p><p class="v" style="margin:0">- HTTPX</p><p class="v" style="margin:0">- BeautifulSoup</p><p class="v" style="margin:0">- Selectolax</p>
+              <p class="g" style="margin:10px 0 0">data_processing:</p><p class="v" style="margin:0">- Pandas</p><p class="v" style="margin:0">- Regex</p><p class="v" style="margin:0">- JSON</p><p class="v" style="margin:0">- CSV</p>
+              <p class="g" style="margin:10px 0 0">dev_tools:</p><p class="v" style="margin:0">- VS Code</p><p class="v" style="margin:0">- Git / GitHub</p><p class="v" style="margin:0">- Postman</p><p class="v" style="margin:0">- Terminal / Bash</p>
+            </div>
+            <div>
+              <div class="sp-group"><h4>// Languages</h4><div class="sp-chips"><span>Python</span><span>SQL</span></div></div>
+              <div class="sp-group"><h4>// Scraping Frameworks</h4><div class="sp-chips"><span>Scrapy</span><span>Playwright</span><span>HTTPX</span><span>BeautifulSoup</span><span>Selectolax</span></div></div>
+              <div class="sp-group"><h4>// Data Processing &amp; Utilities</h4><div class="sp-chips"><span>Pandas</span><span>Regex</span><span>JSON</span><span>CSV</span></div></div>
+              <div class="sp-group"><h4>// Development &amp; Tools</h4><div class="sp-chips"><span>VS Code</span><span>Git / GitHub</span><span>Postman</span><span>Terminal / Bash</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sp-section" id="contact" style="margin-top:64px">
+          <p class="sp-sec-k"><s>05</s>contact</p>
+          <h2 class="sp-h2">Have a Data Extraction or Web Scraping Project in Mind?</h2>
+          <div class="sp-contact">
+            <div>
+              <p style="font-size:16px;line-height:1.75;color:var(--mut);margin:0 0 28px">Let's discuss your project requirements and build a custom automation solution for your business.</p>
+              <p class="sp-lead-l" style="margin:0 0 12px">// direct email</p>
+              <a class="sp-link" href="mailto:beriorag4@gmail.com">beriorag4@gmail.com</a>
+              <p class="sp-lead-l" style="margin:26px 0 12px">// socials</p>
+              <div class="sp-ctas" style="margin:0">
+                <a class="sp-btn sp-btn-s" href="https://github.com/birtukan91" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="sp-btn sp-btn-s" href="https://www.linkedin.com/in/birtukan-gebretsadkan-86a96435a/" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+              <p class="sp-note">avg. response time: under 24 hours · remote, worldwide</p>
+            </div>
+            <div class="sp-formnote">
+              <b>// message form</b>
+              The interactive version of this site includes the full contact form (Name, Email, Message). For now, email me directly at
+              <a class="sp-link" style="font-size:13px" href="mailto:beriorag4@gmail.com">beriorag4@gmail.com</a> 
+            </div>
+          </div>
+        </section>
+
+        <footer class="sp-footer">
+          <span>© 2026 <span style="color:#d2a229">pyextract</span> — python data extraction specialist</span>
+          <span>print("thanks for scrolling")</span>
+          <a href="#top">↑ back_to_top</a>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
