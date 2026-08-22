@@ -3,7 +3,7 @@ import { Reveal } from "../hooks/motion";
 import { SectionHeading } from "./SectionHeading";
 // To use your own photo: replace src/assets/profile.jpg with your image
 // (keep the same filename) and rebuild.
-import profilePhoto from "../assets/profile.jpg";
+import profilePhoto from "../assets/why2.jpg";
 
 function CheckIcon() {
   return (
