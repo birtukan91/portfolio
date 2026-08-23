@@ -107,8 +107,8 @@ export function Contact() {
 
             <Reveal delay={320}>
               <p className="mt-9 font-mono text-[11px] text-faint">
-                <span className="text-gold">avg.</span> response time: under 24 hours · remote,
-                worldwide
+                <span className="text-gold">avg.</span> 
+                
               </p>
             </Reveal>
           </div>
@@ -123,7 +123,7 @@ export function Contact() {
                 <div className="py-6 font-mono text-[13px] leading-[2.2]">
                   <p className="text-faint">$ ./send_message --to client</p>
                   <p className="text-gold-bright">200 OK · message received</p>
-                  <p className="text-muted">queued → I&rsquo;ll reply within 24 hours.</p>
+                  
                   <button
                     onClick={() => setSent(false)}
                     className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold-bright"
@@ -155,7 +155,7 @@ export function Contact() {
                       type="email"
                       name="email"
                       required
-                      placeholder="jane@company.com"
+                      placeholder="your@company.com"
                       className="mt-2 w-full rounded-sm border border-line bg-ink px-4 py-3 text-sm text-paper placeholder:text-faint/70 transition-colors focus:border-gold/70 focus:outline-none"
                     />
                   </div>
