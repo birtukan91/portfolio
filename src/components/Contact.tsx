@@ -107,7 +107,7 @@ export function Contact() {
 
             <Reveal delay={320}>
               <p className="mt-9 font-mono text-[11px] text-faint">
-                <span className="text-gold">avg.</span> 
+                <span className="text-gold"> Available: 24/7</span> · remote, worldwide
                 
               </p>
             </Reveal>
